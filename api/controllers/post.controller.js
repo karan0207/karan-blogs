@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose';
 import Post from '../models/post.model.js';
 import { errorHandler } from '../utils/error.js';
 
@@ -88,6 +89,14 @@ export const updatepost = async (req, res, next) => {
     return next(errorHandler(403, 'You are not allowed to update this post'));
   }
   try {
+    if (!req.params.postId) {
+      return next(errorHandler(400, 'postId is required'));
+    }
+      
+      // Check if userId and postId are valid ObjectId
+      if (!isValidObjectId(req.params.userId) || !isValidObjectId(req.params.postId)) {
+        return next(errorHandler(400, 'Invalid userId or postId'));
+      }
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.postId,
       {
@@ -100,8 +109,11 @@ export const updatepost = async (req, res, next) => {
       },
       { new: true }
     );
+
+
     res.status(200).json(updatedPost);
   } catch (error) {
     next(error);
+    
   }
 };

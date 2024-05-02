@@ -17,10 +17,9 @@ export default function Home() {
   return (
     <div>
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-        <p className='text-gray-500 text-xs sm:text-sm'>
-          Here you'll find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
+        <h1 className='text-3xl text-black dark:text-white font-bold lg:text-6xl'>Welcome to Blogify</h1>
+        <p className='dark:text-gray-500 text-black text-md sm:text-sm'>
+        With a sleek and intuitive design, you will have a fully functional blog up and running in minutes. Take advantage of customizable themes, powerful content management tools, and seamless integration options to create a blog that stands out.
         </p>
         <Link
           to='/search'
@@ -29,7 +28,7 @@ export default function Home() {
           View all posts
         </Link>
       </div>
-      <div className='p-3 bg-amber-100 dark:bg-slate-700'>
+      <div className='p-3 bg-[#b0bec5] dark:bg-slate-700'>
         <CallToAction />
       </div>
 
